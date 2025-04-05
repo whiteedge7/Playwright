@@ -1,4 +1,5 @@
-import { BasePage, LoginPage } from '.';
+import {LoginPage } from '.';
+import { BasePage } from './BasePage';
 
 export class DashboardPage extends BasePage {
   async init(): Promise<this> {
@@ -20,6 +21,6 @@ export class DashboardPage extends BasePage {
 
   async clickLogout(): Promise<LoginPage> {
     await this.page.locator('[role=\"menuitem\"]', { hasText: 'Logout' }).click();
-    return new LoginPage(this.page);
+    return new LoginPage(this.page).init();
   }
 }
