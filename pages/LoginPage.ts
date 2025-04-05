@@ -1,8 +1,8 @@
-import { BasePage, DashboardPage } from '.';
+import { DashboardPage, ForgotPasswordPage } from '.';
+import { BasePage } from './BasePage';
 
 export class LoginPage extends BasePage {
   async init(): Promise<this> {
-    // optional: wait for login form to load
     await this.page.waitForSelector('input[name="username"]');
     return this;
   }
@@ -27,10 +27,16 @@ export class LoginPage extends BasePage {
     await this.fillUsername(process.env.web_username!);
     await this.fillPassword(process.env.web_password!);
     await this.clickLoginButton();
-    return new DashboardPage(this.page);
+    return new DashboardPage(this.page).init();
   }
 
   async getTitle(): Promise<string> {
     return await this.page.locator('h5').innerText();
+  }
+
+  async clickForgotPassword(): Promise<ForgotPasswordPage> {
+    await this.page.waitForLoadState('networkidle');
+    await this.page.locator('.orangehrm-login-forgot-header').click();
+    return new ForgotPasswordPage(this.page).init();
   }
 }
