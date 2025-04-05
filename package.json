@@ -1,0 +1,20 @@
+{
+  "name": "playwright-web",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npx playwright test",
+    "test-headed": "npx playwright test --headed",
+    "test-debug": "npx playwright test --debug",
+    "show-report": "npx playwright show-report"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
