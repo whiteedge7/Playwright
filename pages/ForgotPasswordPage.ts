@@ -16,6 +16,10 @@ export class ForgotPasswordPage extends BasePage {
 
   async clickResetPassword(): Promise<this> {
     await this.page.getByRole('button', { name: 'Reset Password' }).click();
+    await this.page.waitForResponse(res =>
+        res.status() === 200 &&
+        res.url().includes('sendPasswordReset'),
+    );
     return this;
   }
 

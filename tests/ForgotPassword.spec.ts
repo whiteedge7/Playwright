@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto(process.env.URL!);
 });
 
-test.only('Validate Forgot Password process', async ({page}) => {
+test('Validate Forgot Password process', async ({page}) => {
     const PageTitle = await new LoginPage(page)
     .clickForgotPassword()
     .then(_=>_.fillUsername('abc123'))
